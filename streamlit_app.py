@@ -36,7 +36,8 @@ st.write(1)
 
 
 #OPENAIKEY
-os.environ['OPENAI_API_KEY'] = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
+# os.environ['OPENAI_API_KEY']
+api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -100,7 +101,7 @@ text_splitter = CharacterTextSplitter(
 )
 chunks = text_splitter.split_text(raw_text)
 #Embed the text
-embeddings = OpenAIEmbeddings(api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA")
+embeddings = OpenAIEmbeddings()
 VectorStore = FAISS.from_texts(chunks, embeddings)
 ##################Langchain Operations####################
 retriever = VectorStore.as_retriever()
