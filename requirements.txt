@@ -11,3 +11,4 @@ chainlit
 nbconvert
 python-dotenv
 numexpr
+pydantic
