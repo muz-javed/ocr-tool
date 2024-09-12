@@ -36,8 +36,8 @@ st.write(1)
 
 
 #OPENAIKEY
-# os.environ['OPENAI_API_KEY']
-api_key = "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"
+api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
+os.environ['OPENAI_API_KEY'] = api_key
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -107,7 +107,7 @@ VectorStore = FAISS.from_texts(chunks, embeddings)
 retriever = VectorStore.as_retriever()
 # chat completion llm
 llm = ChatOpenAI(
-    # model_name='gpt-4',
+    model_name='gpt-4',
     temperature=0.7
 )
 # conversational memory
