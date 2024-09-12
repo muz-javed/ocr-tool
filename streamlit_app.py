@@ -36,7 +36,7 @@ st.write(1)
 
 
 #OPENAIKEY
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = "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"
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -150,5 +150,5 @@ agent = initialize_agent(
 )
 query = "What is the percentage increase in total fixed assets since previous year?"
 result = agent(query)
-print(result)
+st.write(result)
  
