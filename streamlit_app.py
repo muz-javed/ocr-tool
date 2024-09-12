@@ -100,7 +100,7 @@ text_splitter = CharacterTextSplitter(
 )
 chunks = text_splitter.split_text(raw_text)
 #Embed the text
-embeddings = OpenAIEmbeddings(api_key = "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")
+embeddings = OpenAIEmbeddings()
 VectorStore = FAISS.from_texts(chunks, embeddings)
 ##################Langchain Operations####################
 retriever = VectorStore.as_retriever()
