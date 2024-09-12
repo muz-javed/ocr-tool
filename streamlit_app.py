@@ -27,14 +27,6 @@ from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResu
 
 
 
-
-
-st.write(1)
-
-
-
-
-
 #OPENAIKEY
 api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
 os.environ['OPENAI_API_KEY'] = api_key
@@ -149,7 +141,8 @@ agent = initialize_agent(
     early_stopping_method='generate',
     memory=conversational_memory
 )
-query = "What is the percentage increase in total fixed assets since previous year?"
+# query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
+query = "What is the current ratio for all the dates?"
 result = agent.run(query)
 
 st.write(result)
