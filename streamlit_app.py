@@ -149,6 +149,6 @@ agent = initialize_agent(
     memory=conversational_memory
 )
 query = "What is the percentage increase in total fixed assets since previous year?"
-result = agent(query)
+result = agent.invoke(query)
 st.write(result)
  
