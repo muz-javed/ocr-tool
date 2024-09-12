@@ -1,0 +1,13 @@
+pdfservices-sdk
+langchain
+langchain-community
+openai
+PyPDF2
+faiss-cpu
+tiktoken
+langchain-groq
+langchain-openai
+chainlit
+nbconvert
+python-dotenv
+numexpr
