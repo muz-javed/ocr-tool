@@ -25,6 +25,16 @@ from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_locale imp
 from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_type import OCRSupportedType
 from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
 
+
+
+
+
+st.write(1)
+
+
+
+
+
 #OPENAIKEY
 os.environ['OPENAI_API_KEY'] = "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"
 
