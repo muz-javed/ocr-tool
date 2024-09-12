@@ -150,7 +150,7 @@ query = "What are the current liabilities for the recent most year in the docume
 result = agent.run(query)
 st.write(result)
  
-query = "Now calculate the current ratio."
+query = "Now calculate the current ratio using the above current assets and liabilities."
 result = agent.run(query)
 st.write(result)
  
