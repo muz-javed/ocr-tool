@@ -78,7 +78,7 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     except (ServiceApiException, ServiceUsageException, SdkException) as e:
         logging.exception(f'Exception encountered while executing operation: {e}')
         return None
-reader = ocr_pdf_with_options('./FS 1.1.pdf', './pdfservices-api-credentials.json')
+reader = ocr_pdf_with_options('./Financial_Stmts_CONSO_USD.pdf', './pdfservices-api-credentials.json')
 pdf_stream = BytesIO(reader)
 raw_text = ''
 pdf_reader = PdfReader(pdf_stream)
