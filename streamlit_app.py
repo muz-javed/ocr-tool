@@ -142,7 +142,7 @@ agent = initialize_agent(
     memory=conversational_memory
 )
 # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
-query = "What is the current ratio for the latest year? Give me all the steps and calculations."
+query = "What is the current ratio for the latest year in the document? Give me all the steps and calculations."
 result = agent.run(query)
 
 st.write(result)
