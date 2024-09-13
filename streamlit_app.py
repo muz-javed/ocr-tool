@@ -7,7 +7,8 @@ import streamlit as st
 import pickle
 # from datetime import datetime
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.chains.conversation.memory import ConversationBufferMemory
+# from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferMemory, FileChatMessageHistory
 from langchain.chains import RetrievalQA
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
