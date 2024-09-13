@@ -113,87 +113,87 @@ if pdf_file:
     VectorStore = FAISS.from_texts(chunks, embeddings)
     
 
-    pdf_file_name = pdf_file.name[:-4]
+    # pdf_file_name = pdf_file.name[:-4]
 
-    with open(f"{pdf_file_name}.pkl", "wb") as f:
-        pickle.dump(VectorStore, f)
-
-
-
-
-    
-
-
-
-
-
+    # with open(f"{pdf_file_name}.pkl", "wb") as f:
+    #     pickle.dump(VectorStore, f)
 
 
 
 
     
-    # ##################Langchain Operations####################
-    # retriever = VectorStore.as_retriever()
-    # # chat completion llm
-    # llm = ChatOpenAI(
-    #     model_name='gpt-4',
-    #     temperature=0.7
-    # )
-    # # conversational memory
-    # conversational_memory = ConversationBufferMemory(
-    #     memory_key='chat_history',
-    #     return_messages=True
-    # )
-    # # retrieval qa chain
-    # qa = RetrievalQA.from_chain_type(
-    #     llm=llm,
-    #     chain_type="stuff",
-    #     retriever=retriever,
-    #     callbacks=None
-    # )
+
+
+
+
+
+
+
+
+
     
-    # #result = qa.invoke(query)
-    # #print(result)
-    # knowledge_tool = Tool(
-    #         name='Knowledge Base',
-    #         func=qa.run,
-    #         description=(
-    #             'use this tool when answering questions to get '
-    #             'more information about the financial values'
-    #         )
-    #     )
-    # problem_chain = LLMMathChain.from_llm(llm=llm)
-    # math_tool = Tool.from_function(name="Calculator",
-    #                                func=problem_chain.run,
-    #                                description="Useful for when you need to answer numeric questions. This tool is "
-    #                                            "only for math questions and nothing else. Only input math "
-    #                                            "expressions, without text",
-    #                                )
-    # agent = initialize_agent(
-    #     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    #     tools=[knowledge_tool, math_tool],
-    #     llm=llm,
-    #     verbose=True,
-    #     max_iterations=3,
-    #     early_stopping_method='generate',
-    #     memory=conversational_memory
-    # )
-    # # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
+    ##################Langchain Operations####################
+    retriever = VectorStore.as_retriever()
+    # chat completion llm
+    llm = ChatOpenAI(
+        model_name='gpt-4',
+        temperature=0.7
+    )
+    # conversational memory
+    conversational_memory = ConversationBufferMemory(
+        memory_key='chat_history',
+        return_messages=True
+    )
+    # retrieval qa chain
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=retriever,
+        callbacks=None
+    )
     
-    # query_input = st.text_input("Ask a question", value="")
-    # if query_input:
-    #     result = agent.run(query_input)
-    #     st.write(result)
+    #result = qa.invoke(query)
+    #print(result)
+    knowledge_tool = Tool(
+            name='Knowledge Base',
+            func=qa.run,
+            description=(
+                'use this tool when answering questions to get '
+                'more information about the financial values'
+            )
+        )
+    problem_chain = LLMMathChain.from_llm(llm=llm)
+    math_tool = Tool.from_function(name="Calculator",
+                                   func=problem_chain.run,
+                                   description="Useful for when you need to answer numeric questions. This tool is "
+                                               "only for math questions and nothing else. Only input math "
+                                               "expressions, without text",
+                                   )
+    agent = initialize_agent(
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        tools=[knowledge_tool, math_tool],
+        llm=llm,
+        verbose=True,
+        max_iterations=3,
+        early_stopping_method='generate',
+        memory=conversational_memory
+    )
+    # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
     
-    # # query = "What are the current assets for the recent most year in the document?"
-    # # result = agent.run(query)
-    # # st.write(result)
+    query_input = st.text_input("Ask a question", value="")
+    if query_input:
+        result = agent.run(query_input)
+        st.write(result)
     
-    # # query = "What are the current liabilities for the recent most year in the document?"
-    # # result = agent.run(query)
-    # # st.write(result)
+    # query = "What are the current assets for the recent most year in the document?"
+    # result = agent.run(query)
+    # st.write(result)
+    
+    # query = "What are the current liabilities for the recent most year in the document?"
+    # result = agent.run(query)
+    # st.write(result)
      
-    # # query = "Now calculate the current ratio using the above current assets and liabilities."
-    # # result = agent.run(query)
-    # # st.write(result)
+    # query = "Now calculate the current ratio using the above current assets and liabilities."
+    # result = agent.run(query)
+    # st.write(result)
  
