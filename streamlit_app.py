@@ -4,7 +4,7 @@ from io import BytesIO
 from PyPDF2 import PdfReader
 import os
 import streamlit as st
-import dill as pickle
+import pickle
 # from datetime import datetime
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.chains.conversation.memory import ConversationBufferMemory
