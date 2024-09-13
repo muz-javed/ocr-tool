@@ -112,14 +112,14 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
         )
     )
 
-    covenant_tool = Tool(
-        name='Covenant Base',
-        func=qa.run,
-        description=(
-            'use this tool when answering questions to get '
-            'more information about the covenants and their thresholds'
-        )
-    )
+    # covenant_tool = Tool(
+    #     name='Covenant Base',
+    #     func=qa.run,
+    #     description=(
+    #         'use this tool when answering questions to get '
+    #         'more information about the covenants and their thresholds'
+    #     )
+    # )
     
     problem_chain = LLMMathChain.from_llm(llm=llm)
     math_tool = Tool.from_function(name="Calculator",
@@ -132,7 +132,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
     # Initialize the agent
     agent = initialize_agent(
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-        tools=[covenant_tool, knowledge_tool, math_tool],
+        tools=[knowledge_tool, math_tool],
         llm=llm,
         verbose=True,
         max_iterations=3,
