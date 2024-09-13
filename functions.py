@@ -1,17 +1,38 @@
+import logging
+import json
+from io import BytesIO
+from PyPDF2 import PdfReader
+import os
+import streamlit as st
+import pickle
+# from datetime import datetime
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain.chains import RetrievalQA
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain.agents import Tool, initialize_agent
+from langchain.agents.agent_types import AgentType
+from langchain.chains import LLMMathChain
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.ocr_pdf_job import OCRPDFJob
+from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_params import OCRParams
+from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_locale import OCRSupportedLocale
+from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_type import OCRSupportedType
+from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
+
+
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     try:
-        # # Read the input PDF file
-        # with open(input_pdf_path, 'rb') as file:
-        #     input_stream = file.read()
-
-
         # Read the input PDF file
-        # with open(input_pdf_path, 'rb') as file:
         input_stream = input_pdf_path.read()
-
-
         
         # Load credentials
         with open(credentials_path, 'r') as f:
@@ -45,3 +66,24 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     except (ServiceApiException, ServiceUsageException, SdkException) as e:
         logging.exception(f'Exception encountered while executing operation: {e}')
         return None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
