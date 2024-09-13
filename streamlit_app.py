@@ -57,7 +57,11 @@ def extract_text_from_pdfs(pdf_files):
     return combined_raw_text
 
 # Process the two PDF files
-pdf_files = ['path_to_pdf_1', 'path_to_pdf_2']  # Update with actual file paths
+fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
+cov_pdf_file = st.file_uploader('Upload Covenants', type = 'pdf')
+
+
+pdf_files = [fs_pdf_file, cov_pdf_file]  # Update with actual file paths
 raw_text = extract_text_from_pdfs(pdf_files)
 
 # Split the extracted text into chunks
