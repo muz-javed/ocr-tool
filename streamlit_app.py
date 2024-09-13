@@ -91,6 +91,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
     # Conversational memory
     conversational_memory = ConversationBufferMemory(
         memory_key='chat_history',
+        chat_memory=FileChatMessageHistory('messages.json'),
         return_messages=True
     )
     
