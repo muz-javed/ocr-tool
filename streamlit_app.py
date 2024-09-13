@@ -85,7 +85,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
     # Chat completion llm
     llm = ChatOpenAI(
         model_name='gpt-4',
-        temperature=0.1
+        temperature=0.7
     )
     
     # Conversational memory
@@ -135,7 +135,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
         tools=[knowledge_tool, math_tool],
         llm=llm,
         verbose=True,
-        max_iterations=3,
+        # max_iterations=3,
         early_stopping_method='generate',
         memory=conversational_memory
     )
