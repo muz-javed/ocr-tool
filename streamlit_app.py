@@ -85,7 +85,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
     # Chat completion llm
     llm = ChatOpenAI(
         model_name='gpt-3.5-turbo',
-        temperature=0.5
+        temperature=0.1
     )
     
     # Conversational memory
