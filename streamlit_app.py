@@ -84,7 +84,7 @@ if (fs_pdf_file is not None) and (cov_pdf_file is not None):
     
     # Chat completion llm
     llm = ChatOpenAI(
-        model_name='gpt-3.5-turbo',
+        model_name='gpt-4',
         temperature=0.1
     )
     
