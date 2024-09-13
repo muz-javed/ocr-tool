@@ -113,13 +113,13 @@ if pdf_file:
     VectorStore = FAISS.from_texts(chunks, embeddings)
 
 
-    st.write(VectorStore)
+    # st.write(VectorStore)
     
 
-    # pdf_file_name = pdf_file.name[:-4]
+    pdf_file_name = pdf_file.name[:-4]
 
-    # with open(f"{pdf_file_name}.pkl", "wb") as f:
-    #     pickle.dump(VectorStore, f)
+    with open(f"{pdf_file_name}.pkl", "wb") as f:
+        pickle.dump(VectorStore, f)
 
 
 
