@@ -70,7 +70,7 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     except (ServiceApiException, ServiceUsageException, SdkException) as e:
         logging.exception(f'Exception encountered while executing operation: {e}')
         return None
-reader = ocr_pdf_with_options('./Financial_Stmts_CONSO_USD.pdf', './pdfservices-api-credentials.json')
+reader = ocr_pdf_with_options('./FS1.1.pdf', './pdfservices-api-credentials.json')
 pdf_stream = BytesIO(reader)
 raw_text = ''
 pdf_reader = PdfReader(pdf_stream)
@@ -146,11 +146,11 @@ query = "What are the current assets for the recent most year in the document?"
 result = agent.run(query)
 st.write(result)
 
-query = "What are the current liabilities for the recent most year in the document?"
-result = agent.run(query)
-st.write(result)
+# query = "What are the current liabilities for the recent most year in the document?"
+# result = agent.run(query)
+# st.write(result)
  
-query = "Now calculate the current ratio using the above current assets and liabilities."
-result = agent.run(query)
-st.write(result)
+# query = "Now calculate the current ratio using the above current assets and liabilities."
+# result = agent.run(query)
+# st.write(result)
  
