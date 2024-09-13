@@ -12,3 +12,4 @@ nbconvert
 python-dotenv
 numexpr
 pydantic
+dill
