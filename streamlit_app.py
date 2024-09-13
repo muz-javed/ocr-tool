@@ -33,9 +33,17 @@ os.environ['OPENAI_API_KEY'] = api_key
 logging.basicConfig(level=logging.INFO)
 def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     try:
+        # # Read the input PDF file
+        # with open(input_pdf_path, 'rb') as file:
+        #     input_stream = file.read()
+
+
         # Read the input PDF file
-        with open(input_pdf_path, 'rb') as file:
-            input_stream = file.read()
+        # with open(input_pdf_path, 'rb') as file:
+        input_stream = input_pdf_path.read()
+
+
+        
         # Load credentials
         with open(credentials_path, 'r') as f:
             credentials_data = json.load(f)
