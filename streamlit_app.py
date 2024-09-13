@@ -85,8 +85,6 @@ if pdf_file_uploader:
     # reader = ocr_pdf_with_options('./FS 1.1.pdf', './pdfservices-api-credentials.json')
     reader = ocr_pdf_with_options(pdf_file_uploader, './pdfservices-api-credentials.json')
     
-    
-    
     pdf_stream = BytesIO(reader)
     
     raw_text = ''
@@ -99,79 +97,75 @@ if pdf_file_uploader:
             if text:
                 raw_text += text
     except Exception as e:
-        print(f"Error processing PDF: {e}")
+        st.write(f"Error processing PDF: {e}")
+
+    #Split the extracted text to chunks
+    text_splitter = CharacterTextSplitter(
+        separator = "\n",
+        chunk_size = 1000,
+        chunk_overlap  = 200,
+        length_function = len,
+    )
+    chunks = text_splitter.split_text(raw_text)
+    #Embed the text
+    embeddings = OpenAIEmbeddings(api_key = api_key)
+    VectorStore = FAISS.from_texts(chunks, embeddings)
+    ##################Langchain Operations####################
+    retriever = VectorStore.as_retriever()
+    # chat completion llm
+    llm = ChatOpenAI(
+        model_name='gpt-4',
+        temperature=0.7
+    )
+    # conversational memory
+    conversational_memory = ConversationBufferMemory(
+        memory_key='chat_history',
+        return_messages=True
+    )
+    # retrieval qa chain
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=retriever,
+        callbacks=None
+    )
     
+    #result = qa.invoke(query)
+    #print(result)
+    knowledge_tool = Tool(
+            name='Knowledge Base',
+            func=qa.run,
+            description=(
+                'use this tool when answering questions to get '
+                'more information about the financial values'
+            )
+        )
+    problem_chain = LLMMathChain.from_llm(llm=llm)
+    math_tool = Tool.from_function(name="Calculator",
+                                   func=problem_chain.run,
+                                   description="Useful for when you need to answer numeric questions. This tool is "
+                                               "only for math questions and nothing else. Only input math "
+                                               "expressions, without text",
+                                   )
+    agent = initialize_agent(
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        tools=[knowledge_tool, math_tool],
+        llm=llm,
+        verbose=True,
+        max_iterations=3,
+        early_stopping_method='generate',
+        memory=conversational_memory
+    )
+    # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
+    query = "What are the current assets for the recent most year in the document?"
+    result = agent.run(query)
+    st.write(result)
     
-    st.write(raw_text)
-
-
-# #Split the extracted text to chunks
-# text_splitter = CharacterTextSplitter(
-#     separator = "\n",
-#     chunk_size = 1000,
-#     chunk_overlap  = 200,
-#     length_function = len,
-# )
-# chunks = text_splitter.split_text(raw_text)
-# #Embed the text
-# embeddings = OpenAIEmbeddings(api_key = api_key)
-# VectorStore = FAISS.from_texts(chunks, embeddings)
-# ##################Langchain Operations####################
-# retriever = VectorStore.as_retriever()
-# # chat completion llm
-# llm = ChatOpenAI(
-#     model_name='gpt-4',
-#     temperature=0.7
-# )
-# # conversational memory
-# conversational_memory = ConversationBufferMemory(
-#     memory_key='chat_history',
-#     return_messages=True
-# )
-# # retrieval qa chain
-# qa = RetrievalQA.from_chain_type(
-#     llm=llm,
-#     chain_type="stuff",
-#     retriever=retriever,
-#     callbacks=None
-# )
-
-# #result = qa.invoke(query)
-# #print(result)
-# knowledge_tool = Tool(
-#         name='Knowledge Base',
-#         func=qa.run,
-#         description=(
-#             'use this tool when answering questions to get '
-#             'more information about the financial values'
-#         )
-#     )
-# problem_chain = LLMMathChain.from_llm(llm=llm)
-# math_tool = Tool.from_function(name="Calculator",
-#                                func=problem_chain.run,
-#                                description="Useful for when you need to answer numeric questions. This tool is "
-#                                            "only for math questions and nothing else. Only input math "
-#                                            "expressions, without text",
-#                                )
-# agent = initialize_agent(
-#     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-#     tools=[knowledge_tool, math_tool],
-#     llm=llm,
-#     verbose=True,
-#     max_iterations=3,
-#     early_stopping_method='generate',
-#     memory=conversational_memory
-# )
-# # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
-# query = "What are the current assets for the recent most year in the document?"
-# result = agent.run(query)
-# st.write(result)
-
-# # query = "What are the current liabilities for the recent most year in the document?"
-# # result = agent.run(query)
-# # st.write(result)
- 
-# # query = "Now calculate the current ratio using the above current assets and liabilities."
-# # result = agent.run(query)
-# # st.write(result)
+    # query = "What are the current liabilities for the recent most year in the document?"
+    # result = agent.run(query)
+    # st.write(result)
+     
+    # query = "Now calculate the current ratio using the above current assets and liabilities."
+    # result = agent.run(query)
+    # st.write(result)
  
