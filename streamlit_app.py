@@ -25,8 +25,6 @@ from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_locale imp
 from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_type import OCRSupportedType
 from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
 
-
-
 #OPENAIKEY
 api_key = "sk-svcacct-1zPs3N4CuXrMJgUKFmOz0GBKT3iYpz6q9xXazC8pwaO17jvFUW7I9lIVO86sqQ1T3BlbkFJCiN4obeFtNBA7ggV6_P4txg2trDGM6MGolx8I18SrcNqOce1AquOz-QMRfX8W2gA"
 os.environ['OPENAI_API_KEY'] = api_key
@@ -70,87 +68,102 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
     except (ServiceApiException, ServiceUsageException, SdkException) as e:
         logging.exception(f'Exception encountered while executing operation: {e}')
         return None
-reader = ocr_pdf_with_options('./FS 1.1.pdf', './pdfservices-api-credentials.json')
-pdf_stream = BytesIO(reader)
-raw_text = ''
-pdf_reader = PdfReader(pdf_stream)
 
-try:
+
+
+pdf_file_uploader = st.file_uploader('Upload a PDF File', type = 'pdf')
+
+if pdf_file_uploader:
+    # reader = ocr_pdf_with_options('./FS 1.1.pdf', './pdfservices-api-credentials.json')
+    reader = ocr_pdf_with_options(pdf_file_uploader, './pdfservices-api-credentials.json')
+    
+    
+    
+    pdf_stream = BytesIO(reader)
+    
+    raw_text = ''
     pdf_reader = PdfReader(pdf_stream)
-    for i, page in enumerate(pdf_reader.pages):
-        text = page.extract_text()
-        if text:
-            raw_text += text
-except Exception as e:
-    print(f"Error processing PDF: {e}")
-# print(raw_text)
-#Split the extracted text to chunks
-text_splitter = CharacterTextSplitter(
-    separator = "\n",
-    chunk_size = 1000,
-    chunk_overlap  = 200,
-    length_function = len,
-)
-chunks = text_splitter.split_text(raw_text)
-#Embed the text
-embeddings = OpenAIEmbeddings(api_key = api_key)
-VectorStore = FAISS.from_texts(chunks, embeddings)
-##################Langchain Operations####################
-retriever = VectorStore.as_retriever()
-# chat completion llm
-llm = ChatOpenAI(
-    model_name='gpt-4',
-    temperature=0.7
-)
-# conversational memory
-conversational_memory = ConversationBufferMemory(
-    memory_key='chat_history',
-    return_messages=True
-)
-# retrieval qa chain
-qa = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever=retriever,
-    callbacks=None
-)
+    
+    try:
+        pdf_reader = PdfReader(pdf_stream)
+        for i, page in enumerate(pdf_reader.pages):
+            text = page.extract_text()
+            if text:
+                raw_text += text
+    except Exception as e:
+        print(f"Error processing PDF: {e}")
+    
+    
+    st.write(raw_text)
 
-#result = qa.invoke(query)
-#print(result)
-knowledge_tool = Tool(
-        name='Knowledge Base',
-        func=qa.run,
-        description=(
-            'use this tool when answering questions to get '
-            'more information about the financial values'
-        )
-    )
-problem_chain = LLMMathChain.from_llm(llm=llm)
-math_tool = Tool.from_function(name="Calculator",
-                               func=problem_chain.run,
-                               description="Useful for when you need to answer numeric questions. This tool is "
-                                           "only for math questions and nothing else. Only input math "
-                                           "expressions, without text",
-                               )
-agent = initialize_agent(
-    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    tools=[knowledge_tool, math_tool],
-    llm=llm,
-    verbose=True,
-    max_iterations=3,
-    early_stopping_method='generate',
-    memory=conversational_memory
-)
-# query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
-query = "What are the current assets for the recent most year in the document?"
-result = agent.run(query)
-st.write(result)
 
-# query = "What are the current liabilities for the recent most year in the document?"
+# #Split the extracted text to chunks
+# text_splitter = CharacterTextSplitter(
+#     separator = "\n",
+#     chunk_size = 1000,
+#     chunk_overlap  = 200,
+#     length_function = len,
+# )
+# chunks = text_splitter.split_text(raw_text)
+# #Embed the text
+# embeddings = OpenAIEmbeddings(api_key = api_key)
+# VectorStore = FAISS.from_texts(chunks, embeddings)
+# ##################Langchain Operations####################
+# retriever = VectorStore.as_retriever()
+# # chat completion llm
+# llm = ChatOpenAI(
+#     model_name='gpt-4',
+#     temperature=0.7
+# )
+# # conversational memory
+# conversational_memory = ConversationBufferMemory(
+#     memory_key='chat_history',
+#     return_messages=True
+# )
+# # retrieval qa chain
+# qa = RetrievalQA.from_chain_type(
+#     llm=llm,
+#     chain_type="stuff",
+#     retriever=retriever,
+#     callbacks=None
+# )
+
+# #result = qa.invoke(query)
+# #print(result)
+# knowledge_tool = Tool(
+#         name='Knowledge Base',
+#         func=qa.run,
+#         description=(
+#             'use this tool when answering questions to get '
+#             'more information about the financial values'
+#         )
+#     )
+# problem_chain = LLMMathChain.from_llm(llm=llm)
+# math_tool = Tool.from_function(name="Calculator",
+#                                func=problem_chain.run,
+#                                description="Useful for when you need to answer numeric questions. This tool is "
+#                                            "only for math questions and nothing else. Only input math "
+#                                            "expressions, without text",
+#                                )
+# agent = initialize_agent(
+#     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+#     tools=[knowledge_tool, math_tool],
+#     llm=llm,
+#     verbose=True,
+#     max_iterations=3,
+#     early_stopping_method='generate',
+#     memory=conversational_memory
+# )
+# # query = "What is the percentage increase in total fixed assets and total liabilities since previous year?"
+# query = "What are the current assets for the recent most year in the document?"
 # result = agent.run(query)
 # st.write(result)
+
+# # query = "What are the current liabilities for the recent most year in the document?"
+# # result = agent.run(query)
+# # st.write(result)
  
-# query = "Now calculate the current ratio using the above current assets and liabilities."
-# result = agent.run(query)
-# st.write(result)
+# # query = "Now calculate the current ratio using the above current assets and liabilities."
+# # result = agent.run(query)
+# # st.write(result)
  
