@@ -53,9 +53,10 @@ with cols[1]:
  st.markdown(f"""<div style="border-radius: 5px;">
  <h4 style="text-align:left; color: white;">
     <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px; ">
-        <li style="margin-bottom: 5px; font-size: 14px;">Prepare the data as per the data dictionary.</li>
-        <li style="margin-bottom: 5px; font-size: 14px;">Upload the data file.</li>
-        <li style="margin-bottom: 5px; font-size: 14px;">Visualize the data in the dashboard.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">OCR is applied to the PDF files to extract text from image-based content.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">OpenAI APIs are utilized to calculate financial ratios based on the data extracted from the customers' financial statements.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">The financial covenant document is reviewed to ensure compliance with covenant thresholds.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">A final flag is generated, indicating whether a material breach of financial covenants has occurred.</li>
     </ul>
 </h4>
 </div>
