@@ -224,7 +224,7 @@ with tabs[0]:
   #st.write(result)
   df['As of Date'] = [result["output"]]
 
-  query = "Extract the unit in which the values are written within the financial statement? Return one word answer"
+  query = "Extract the scale or multiplier in which the values are written within the financial statement? Return one word answer"
   result = agent({"input":query})
   st.write(result["output"])
   # df['As of Date'] = [result["output"]]
