@@ -5,16 +5,20 @@ from PyPDF2 import PdfReader
 import os
 import streamlit as st
 import pickle
+
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate
 # from datetime import datetime
+
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-# from langchain.chains.conversation.memory import ConversationBufferMemory
-from langchain.memory import ConversationBufferMemory, FileChatMessageHistory
+from langchain.memory import ConversationBufferMemory
 from langchain.chains import RetrievalQA
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain.agents import Tool, initialize_agent
+ 
+from langchain.agents import Tool, initialize_agent, OpenAIFunctionsAgent, AgentExecutor
 from langchain.agents.agent_types import AgentType
 from langchain.chains import LLMMathChain
+ 
 from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
 from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
 from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
