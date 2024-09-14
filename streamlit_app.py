@@ -127,8 +127,8 @@ with tabs[0]:
   #Split the extracted text to chunks
   text_splitter = CharacterTextSplitter(
       separator = "\n",
-      chunk_size = 1000,
-      chunk_overlap  = 200,
+      chunk_size = 700,
+      chunk_overlap  = 150,
       length_function = len,
   )
   chunks = text_splitter.split_text(raw_text_financials)
@@ -251,12 +251,12 @@ with tabs[0]:
   query = f"What is the Tangible Net worth in {currency_scale} as of {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['Tangible Net Worth'] = [result["output"]]
-  st.write(result)
+  # st.write(result)
    
-  # query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
-  # result = agent({"input":query})
-  # df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
-  # # #st.write(result)
+  query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
+  result = agent({"input":query})
+  df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
+  st.write(result)
    
   # query = "What is the latest Debt to Net worth as of the financial statement for {as_of_date}? Return one word answer"
   # result = agent({"input":query})
