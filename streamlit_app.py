@@ -72,7 +72,20 @@ with cols[1]:
 
 st.markdown(f"""<div><h2 style="text-align:left; color: white; ">Chat with PDF</h2></div>""", unsafe_allow_html=True)
 
-
+st.markdown("""
+    <style>
+    button[data-baseweb="tab"] {
+        flex-grow: 1;
+        text-align: center;
+    }
+    .st-cr {
+        color: black;
+    }
+    .st-d8 {
+        color: black;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 tabs = st.tabs(['Financial Covenants', 'Bankruptcy Flag'])
 
