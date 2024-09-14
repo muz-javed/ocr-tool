@@ -45,7 +45,7 @@ with st.sidebar:
  cols = st.columns([0.3, 3])
  
 with cols[1]:
- st.markdown(f"""<div><h2 style="text-align:left; color: white; ">LLM Chat App</h2></div>""", unsafe_allow_html=True)
+ st.markdown(f"""<div><h2 style="text-align:left; color: white; margin-top:20px; ">LLM Chat App</h2></div>""", unsafe_allow_html=True)
  st.markdown(f"""<div><h3 style="text-align:left; color: white; ">About</h3></div>""", unsafe_allow_html=True)
 
  st.markdown(f"""<div style="border-radius: 5px;">
