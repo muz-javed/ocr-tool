@@ -57,6 +57,25 @@ def extract_text_from_pdfs(pdf_files):
     
     return combined_raw_text
 
+
+
+
+
+with st.sidebar():
+    s.write('123')
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Process the two PDF files
 fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
 cov_pdf_file = st.file_uploader('Upload Covenants', type = 'pdf')
