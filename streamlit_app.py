@@ -272,7 +272,7 @@ with tabs[1]:
   verbose=True,
   )
 
- query = st.text_input(label, value="")
+ query = st.text_input('Ask Away!', value="")
 
  if query:
   agent_chain.run(
