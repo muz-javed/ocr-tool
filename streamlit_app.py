@@ -50,10 +50,10 @@ with cols[1]:
 
  st.markdown(f"""<div style="border-radius: 5px;">
  <h4 style="text-align:left; color: white;">
-    <ul style="list-style-type: disc; margin-left: 20px;">
-        <li style="margin-bottom: 5px; font-size: 13px;">Prepare the data as per the data dictionary.</li>
-        <li style="margin-bottom: 5px; font-size: 13px;">Upload the data file.</li>
-        <li style="margin-bottom: 5px; font-size: 13px;">Visualize the data in the dashboard.</li>
+    <ul style="list-style-type: disc; margin-left: 1px;">
+        <li style="margin-bottom: 5px; font-size: 2px;">Prepare the data as per the data dictionary.</li>
+        <li style="margin-bottom: 5px; font-size: 2px;">Upload the data file.</li>
+        <li style="margin-bottom: 5px; font-size: 2px;">Visualize the data in the dashboard.</li>
     </ul>
 </h4>
 </div>
