@@ -37,7 +37,7 @@ os.environ['OPENAI_API_KEY'] = api_key
 
 
 with st.sidebar:
-    s.write('123')
+    st.write('123')
 
 
 
