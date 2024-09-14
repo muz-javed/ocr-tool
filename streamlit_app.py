@@ -43,7 +43,7 @@ with st.sidebar:
 
 fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
 
-reader = ocr_pdf_with_options(fs_pdf_file, './pdfservices-api-credentials.json')
+reader = extract_text_from_pdfs(fs_pdf_file)
  
 pdf_stream = BytesIO(reader)
  
