@@ -230,36 +230,36 @@ with tabs[0]:
   st.write(result["output"])
   currency_scale = result["output"]
    
-  query = "What are the latest total current assets in {currency_scale} as of this date? Return one word answer"
+  query = "What are the latest total current assets in {currency_scale} as of {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['Current Assets'] = [result["output"]]
   #st.write(result)
    
-  query = "What are the latest total current liabilities in {currency_scale} as of the financial statement for {as_of_date}? Return one word answer"
+  query = "What are the latest total current liabilities in {currency_scale} as of {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['Current Liabilities'] = [result["output"]]
   #st.write(result)
    
-  current_assets = df['Current Assets'].iloc[0]
-  current_liabilities = df['Current Liabilities'].iloc[0]
-  query = f"The current assets are {current_assets} and the current liabilities are {current_liabilities}. What is the current ratio? Return one number only"
-  result = agent({"input":query})
-  df['Current Ratio'] = [result["output"]]
-  #st.write(result)
-   
-  query = "What is the latest total Tangible Net worth in {currency_scale} as of the financial statement for {as_of_date}? Return one word answer"
-  result = agent({"input":query})
-  df['Tangible Net Worth'] = [result["output"]]
-  #st.write(result)
-   
-  query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
-  result = agent({"input":query})
-  df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
+  # current_assets = df['Current Assets'].iloc[0]
+  # current_liabilities = df['Current Liabilities'].iloc[0]
+  # query = f"The current assets are {current_assets} and the current liabilities are {current_liabilities}. What is the current ratio? Return one number only"
+  # result = agent({"input":query})
+  # df['Current Ratio'] = [result["output"]]
   # #st.write(result)
    
-  query = "What is the latest Debt to Net worth as of the financial statement for {as_of_date}? Return one word answer"
-  result = agent({"input":query})
-  df['Debt/Net Worth'] = [result["output"]]
+  # query = "What is the latest total Tangible Net worth in {currency_scale} as of the financial statement for {as_of_date}? Return one word answer"
+  # result = agent({"input":query})
+  # df['Tangible Net Worth'] = [result["output"]]
+  # #st.write(result)
+   
+  # query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
+  # result = agent({"input":query})
+  # df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
+  # # #st.write(result)
+   
+  # query = "What is the latest Debt to Net worth as of the financial statement for {as_of_date}? Return one word answer"
+  # result = agent({"input":query})
+  # df['Debt/Net Worth'] = [result["output"]]
   # #st.write(result)
    
   st.table(df)
