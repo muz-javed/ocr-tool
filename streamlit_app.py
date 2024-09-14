@@ -99,6 +99,9 @@ with st.sidebar:
 
 
 
+
+st.markdown(f"""<div style="border-radius: 5px;"><h2 style="text-align:left; color: white; ">Chat with PDF</h2></div>""", unsafe_allow_html=True)
+
 fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
 
 
