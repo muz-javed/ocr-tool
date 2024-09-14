@@ -275,9 +275,9 @@ with tabs[1]:
  query = st.text_input('Ask Away!', value="")
 
  if query:
-  agent_chain.run(
+  st.write(agent_chain.run(
      query,
- )
+ ))
 
 
 
