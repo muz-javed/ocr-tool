@@ -168,7 +168,7 @@ with tabs[0]:
  
  
  if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
-  reader = ocr_pdf_with_options('./Financial_Stmts_CONSO_USD.pdf', './pdfservices-api-credentials.json')
+  reader = ocr_pdf_with_options(fs_pdf_file, './pdfservices-api-credentials.json')
    
   pdf_stream = BytesIO(reader)
    
