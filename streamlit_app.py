@@ -238,7 +238,8 @@ with tabs[0]:
   query = "What are the total current liabilities in {currency_scale} as of {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['Current Liabilities'] = [result["output"]]
-  #st.write(result)
+  st.write("What are the total current liabilities in {currency_scale} as of {as_of_date}? Return one word answer")
+  st.write(result)
    
   current_assets = df['Current Assets'].iloc[0]
   current_liabilities = df['Current Liabilities'].iloc[0]
