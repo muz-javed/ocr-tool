@@ -66,6 +66,19 @@ with cols[1]:
  """, unsafe_allow_html=True)
 
 
+ st.markdown(f"""<div><h4 style="text-align:left; color: white; margin-top: -10px; ">Bankruptcy Flag</h4></div>""", unsafe_allow_html=True)
+ st.markdown(f"""<div style="border-radius: 5px;">
+  <h4 style="text-align:left; color: white;">
+     <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px;">
+         <li style="margin-bottom: 5px; font-size: 14px;">Tavily is a search engine optimized for LLMs.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">Aggregates and filters data from up to 20 sites per API call.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">Reduces hallucinations through contextual retrieval​.</li>
+     </ul>
+ </h4>
+ </div>
+ """, unsafe_allow_html=True)
+
+
 
 
 
@@ -272,7 +285,7 @@ with tabs[1]:
   verbose=True,
   )
 
- query = st.text_input('Ask Away!', value="")
+ query = st.text_input('Ask the bankruptcy status.', value="")
 
  if query:
   st.write(agent_chain.run(
