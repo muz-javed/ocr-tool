@@ -52,8 +52,11 @@ with st.sidebar:
 
 
 # Process the two PDF files
-fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
-cov_pdf_file = st.file_uploader('Upload Covenants', type = 'pdf')
+cols = st.columns(2)
+with cols[0]:
+    fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
+with cols[1]:
+    cov_pdf_file = st.file_uploader('Upload Covenants', type = 'pdf')
 
 
 if (fs_pdf_file is not None) and (cov_pdf_file is not None): 
