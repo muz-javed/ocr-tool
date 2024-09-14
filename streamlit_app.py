@@ -95,7 +95,7 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
 
 
 with st.sidebar:
- cols = st.columns([1, 3])
+ cols = st.columns([0.3, 3])
 with cols[1]:
  st.markdown(f"""<div><h2 style="text-align:left; color: white; ">LLM Chat App</h2></div>""", unsafe_allow_html=True)
  st.markdown(f"""<div><h3 style="text-align:left; color: white; ">About</h3></div>""", unsafe_allow_html=True)
