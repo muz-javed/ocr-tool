@@ -227,14 +227,14 @@ with tabs[0]:
   query = "Extract the scale or multiplier in which the values are written within the financial statement? Return one word answer"
   result = agent({"input":query})
   st.write(result["output"])
-  # df['As of Date'] = [result["output"]]
+  currency_scale = result["output"]
    
-  query = "What are the latest current assets as of this date? Return one word answer"
+  query = "What are the latest current assets in {currency_scale} as of this date? Return one word answer"
   result = agent({"input":query})
   df['Current Assets'] = [result["output"]]
   #st.write(result)
    
-  query = "What are the latest current liabilities as of the financial statement? Return one word answer"
+  query = "What are the latest current liabilities in {currency_scale} as of the financial statement? Return one word answer"
   result = agent({"input":query})
   df['Current Liabilities'] = [result["output"]]
   #st.write(result)
