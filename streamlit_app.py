@@ -51,9 +51,9 @@ with cols[1]:
  st.markdown(f"""<div style="border-radius: 5px;">
  <h4 style="text-align:left; color: white;">
     <ul style="list-style-type: disc; margin-left: 1px;">
-        <li style="margin-bottom: 5px; font-size: 16px;">Prepare the data as per the data dictionary.</li>
-        <li style="margin-bottom: 5px; font-size: 16px;">Upload the data file.</li>
-        <li style="margin-bottom: 5px; font-size: 16px;">Visualize the data in the dashboard.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">Prepare the data as per the data dictionary.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">Upload the data file.</li>
+        <li style="margin-bottom: 5px; font-size: 14px;">Visualize the data in the dashboard.</li>
     </ul>
 </h4>
 </div>
