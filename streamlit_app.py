@@ -36,32 +36,7 @@ os.environ['OPENAI_API_KEY'] = api_key
 
 
 
-
-
-# Function to process both PDFs
-def extract_text_from_pdfs(pdf_files):
-    combined_raw_text = ''
-    
-    for pdf_file in pdf_files:
-        reader = ocr_pdf_with_options(pdf_file, './pdfservices-api-credentials.json')  # Assuming you need OCR
-        pdf_stream = BytesIO(reader)
-        
-        try:
-            pdf_reader = PdfReader(pdf_stream)
-            for i, page in enumerate(pdf_reader.pages):
-                text = page.extract_text()
-                if text:
-                    combined_raw_text += text
-        except Exception as e:
-            st.write(f"Error processing PDF {pdf_file}: {e}")
-    
-    return combined_raw_text
-
-
-
-
-
-with st.sidebar():
+with st.sidebar:
     s.write('123')
 
 
