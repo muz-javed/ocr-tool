@@ -51,16 +51,17 @@ with cols[1]:
  
  st.markdown(f"""<div><h4 style="text-align:left; color: white; margin-top: -10px; ">This is an LLM-Powered App</h4></div>""", unsafe_allow_html=True)
  st.markdown(f"""<div style="border-radius: 5px;">
- <h4 style="text-align:left; color: white;">
-    <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px; ">
-        <li style="margin-bottom: 5px; font-size: 14px;">OCR is applied to the PDF files to extract text from image-based content.</li>
-        <li style="margin-bottom: 5px; font-size: 14px;">OpenAI APIs are utilized to calculate financial ratios based on the data extracted from the customers' financial statements.</li>
-        <li style="margin-bottom: 5px; font-size: 14px;">The financial covenant document is reviewed to ensure compliance with covenant thresholds.</li>
-        <li style="margin-bottom: 5px; font-size: 14px;">A final flag is generated, indicating whether a material breach of financial covenants has occurred.</li>
-    </ul>
-</h4>
-</div>
-""", unsafe_allow_html=True)
+  <h4 style="text-align:left; color: white;">
+     <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px;">
+         <li style="margin-bottom: 5px; font-size: 14px;">OCR is performed on PDF files to convert image-based content into text for analysis.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">OpenAI APIs are used to calculate financial ratios based on the data extracted from customers' financial statements.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">The financial covenant file is reviewed to ensure that covenant thresholds are not breached.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">A final flag is generated to confirm whether a material breach of financial covenants has occurred or not.</li>
+     </ul>
+ </h4>
+ </div>
+ """, unsafe_allow_html=True)
+
 
 
 
