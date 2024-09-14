@@ -13,3 +13,5 @@ python-dotenv
 numexpr
 pydantic
 dill
+tavily-python
+ 
