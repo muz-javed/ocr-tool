@@ -53,14 +53,15 @@ with cols[1]:
  st.markdown(f"""<div style="border-radius: 5px;">
   <h4 style="text-align:left; color: white;">
      <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px;">
-         <li style="margin-bottom: 5px; font-size: 14px;">OCR is performed on PDF files to convert image-based content into text for analysis.</li>
-         <li style="margin-bottom: 5px; font-size: 14px;">OpenAI APIs are used to calculate financial ratios based on the data extracted from customers' financial statements.</li>
-         <li style="margin-bottom: 5px; font-size: 14px;">The financial covenant file is reviewed to ensure that covenant thresholds are not breached.</li>
-         <li style="margin-bottom: 5px; font-size: 14px;">A final flag is generated to confirm whether a material breach of financial covenants has occurred or not.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">OCR is applied to convert image-based content from PDFs into text.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">OpenAI is used to calculate financial ratios from customer financial statements.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">Financial covenants are reviewed to ensure threshold compliance.</li>
+         <li style="margin-bottom: 5px; font-size: 14px;">A final flag confirms if there is a material breach of the covenants.</li>
      </ul>
  </h4>
  </div>
  """, unsafe_allow_html=True)
+
 
 
 
