@@ -251,7 +251,7 @@ with tabs[0]:
   query = f"What is the Tangible Net worth in {currency_scale} as of {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['Tangible Net Worth'] = [result["output"]]
-  #st.write(result)
+  st.write(result)
    
   # query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
   # result = agent({"input":query})
