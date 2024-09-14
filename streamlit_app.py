@@ -50,12 +50,15 @@ with cols[1]:
 
  st.markdown(f"""<div style="border-radius: 5px;">
  <h4 style="text-align:left; color: white;">
-            <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the data dictionary.</p>
-            <p style="margin-bottom: 5px; font-size: 13px;">2. Upload the data file.</p>
-            <p style="margin-bottom: 5px; font-size: 13px;">3. Visualize the data in the dashboard.</p>
-        </h4>
-    </div>
-    """, unsafe_allow_html=True)
+    <ul style="list-style-type: disc; margin-left: 20px;">
+        <li style="margin-bottom: 5px; font-size: 13px;">Prepare the data as per the data dictionary.</li>
+        <li style="margin-bottom: 5px; font-size: 13px;">Upload the data file.</li>
+        <li style="margin-bottom: 5px; font-size: 13px;">Visualize the data in the dashboard.</li>
+    </ul>
+</h4>
+</div>
+""", unsafe_allow_html=True)
+
 
 
 
@@ -220,7 +223,7 @@ if fs_pdf_file:
  df['Debt/Net Worth'] = [result["output"]]
  #st.write(result)
   
- st.write(df)
+ st.table(df)
 
 
 
