@@ -246,10 +246,10 @@ with tabs[0]:
   df['Current Ratio'] = [result["output"]]
   #st.write(result)
    
-  # query = "What is the latest total Tangible Net worth as of the financial statement? Return one word answer"
-  # result = agent({"input":query})
-  # df['Tangible Net Worth'] = [result["output"]]
-  # #st.write(result)
+  query = "What is the latest total Tangible Net worth in {currency_scale} as of the financial statement? Return one word answer"
+  result = agent({"input":query})
+  df['Tangible Net Worth'] = [result["output"]]
+  #st.write(result)
    
   # query = "What is the latest EBIDTA to Interest Expense + CPLTD as of the financial statement? Return one word answer"
   # result = agent({"input":query})
