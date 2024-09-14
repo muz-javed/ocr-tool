@@ -223,7 +223,7 @@ with tabs[0]:
   result = agent({"input":query})
   #st.write(result)
   df['As of Date'] = [result["output"]]
-  as_of_date = [result["output"]]
+  as_of_date = [result["output"]][0]
 
   query = "Extract the scale or multiplier in which the values are written within the financial statement? Return one word answer"
   result = agent({"input":query})
