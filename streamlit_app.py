@@ -266,7 +266,124 @@ with tabs[0]:
   #st.write(result)
    
   st.table(df)
- 
+
+
+
+ ##########################COVENANTS#################
+ cov_reader = ocr_pdf_with_options('./Financial covenants for XYZ.pdf', './pdfservices-api-credentials.json')
+  
+ cov_pdf_stream = BytesIO(cov_reader)
+  
+ raw_text_cov = ''
+  
+ #pdf_reader_cov = PdfReader(cov_pdf_stream)
+  
+ try:
+     pdf_reader_cov = PdfReader(cov_pdf_stream)
+  
+     for i, page in enumerate(pdf_reader_cov.pages):
+         text = page.extract_text()
+         if text:
+             raw_text_cov += text
+  
+ except Exception as e:
+     print(f"Error processing PDF: {e}")
+  
+ # print(raw_text)
+  
+ #Split the extracted text to chunks
+ cov_chunks = text_splitter.split_text(raw_text_cov)
+  
+ #Embed the text
+ CovVectorStore = FAISS.from_texts(cov_chunks, embeddings)
+  
+ cov_retriever = CovVectorStore.as_retriever()
+  
+ #Financial retriever
+ financial_description = df.iloc[0].to_string()
+ #embeddings = OpenAIEmbeddings()
+ #financial_embedding = embeddings.embed_documents([financial_description])
+  
+ # Create metadata for the row
+ metadata = [df.iloc[0].to_dict()]
+  
+ # Create a FAISS vector store with the embedding and metadata
+ financial_vector_store = FAISS.from_texts([financial_description], embeddings)
+  
+ fin_retriever = financial_vector_store.as_retriever()
+  
+  
+ cov_qa = RetrievalQA.from_chain_type(
+     llm=llm,
+     chain_type="stuff",
+     retriever=cov_retriever,
+     callbacks=None
+ )
+  
+ financial_qa_chain = RetrievalQA.from_chain_type(
+ llm=llm,
+     chain_type="stuff",
+     retriever=fin_retriever,
+     callbacks=None
+ )
+  
+ # Cov Tools
+ cov_knowledge_tool = Tool(
+         name='CovenantKnowledgeBase',
+         func=cov_qa.run,
+         description="Use this tool to check for covenant details and thresholds."
+ )
+  
+ financial_tool = Tool(
+     name="FinancialChecker",
+     func=financial_qa_chain.run,
+     description="Use this tool to retrieve financial information about the company."
+ )
+  
+ cov_agent = initialize_agent(
+     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+     prompt=chat_prompt,
+     tools=[cov_knowledge_tool, financial_tool, math_tool],
+     llm=llm,
+     verbose=True,
+     #max_iterations=3,
+     #early_stopping_method='generate',
+     memory=conversational_memory
+ )
+  
+ query = "Check if company XYZ has breached any covenants based on the financial data provided. Be detailed in your response"
+  
+ # Run the agent using the tools
+ result = cov_agent.run(query)
+ st.write(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
