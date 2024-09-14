@@ -49,7 +49,7 @@ with cols[1]:
  st.markdown(f"""<div><h3 style="text-align:left; color: white; ">About</h3></div>""", unsafe_allow_html=True)
 
  
- st.markdown(f"""<div><h4 style="text-align:left; color: white; ">This is an LLM-Powered App</h4></div>""", unsafe_allow_html=True)
+ st.markdown(f"""<div><h4 style="text-align:left; color: white; margin-top: -10px; ">This is an LLM-Powered App</h4></div>""", unsafe_allow_html=True)
  st.markdown(f"""<div style="border-radius: 5px;">
  <h4 style="text-align:left; color: white;">
     <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px; ">
