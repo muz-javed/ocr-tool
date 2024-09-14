@@ -248,7 +248,7 @@ with tabs[0]:
   df['Current Ratio'] = [result["output"]]
   #st.write(result)
    
-  query = f"What is the Tangible Net worth in {currency_scale} as of {as_of_date}? Return one word answer"
+  query = f"What is the Tangible Net worth as of {as_of_date}? Provide the result in {currency_scale} and make sure to return one word answer only"
   result = agent({"input":query})
   df['Tangible Net Worth'] = [result["output"]]
   # st.write(result)
