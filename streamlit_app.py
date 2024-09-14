@@ -309,12 +309,12 @@ with tabs[0]:
    
   query = "What is the latest total Tangible Net worth as of the financial statement? Return one word answer"
   result = agent({"input":query})
-  df['Net Worth'] = [result["output"]]
+  df['Tangible Net Worth'] = [result["output"]]
   #st.write(result)
    
   query = "What is the latest EBIDTA to Interest Expense + CPLTD as of the financial statement? Return one word answer"
   result = agent({"input":query})
-  df['EBIDTA/Int+CPLTD'] = [result["output"]]
+  df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
   #st.write(result)
    
   query = "What is the latest Debt to Net worth as of the financial statement? Return one word answer"
