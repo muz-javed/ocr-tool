@@ -95,12 +95,12 @@ def ocr_pdf_with_options(input_pdf_path: str, credentials_path: str):
 
 
 with st.sidebar:
-    st.write('123')
+    st.markdown(f"""<div><h3 style="text-align:left; color: white; ">LLM Chat App</h3></div>""", unsafe_allow_html=True)
 
 
 
 
-st.markdown(f"""<div style="border-radius: 5px;"><h2 style="text-align:left; color: white; ">Chat with PDF</h2></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div><h2 style="text-align:left; color: white; ">Chat with PDF</h2></div>""", unsafe_allow_html=True)
 
 fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
 
