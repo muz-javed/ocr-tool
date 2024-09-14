@@ -253,7 +253,7 @@ with tabs[0]:
   # df['Tangible Net Worth'] = [result["output"]]
   # # st.write(result)
    
-  query = "What is the latest EBIDTA/(Interest Expense + CPLTD) as of the financial statement for {as_of_date}? Return one word answer"
+  query = "What is the latest EBIDTA to Interest Expense + CPLTD as of the financial statement for {as_of_date}? Return one word answer"
   result = agent({"input":query})
   df['EBITDA to Debt Service Coverage Ratio'] = [result["output"]]
   st.write(result)
