@@ -225,7 +225,7 @@ with tabs[0]:
   df['As of Date'] = [result["output"]]
   as_of_date = [result["output"]]
 
-  query = "Extract the scale or multiplier in which the values are written within the financial statement for {as_of_date}? Return one word answer"
+  query = "Extract the scale or multiplier in which the values are written within the financial statement? Return one word answer"
   result = agent({"input":query})
   st.write(result["output"])
   currency_scale = result["output"]
