@@ -224,31 +224,27 @@ with tabs[0]:
   #st.write(result)
   df['As of Date'] = [result["output"]]
 
-
   query = "Extract the unit in which the values are written within the financial statement? Return one word answer"
   result = agent({"input":query})
   st.write(result["output"])
   # df['As of Date'] = [result["output"]]
-
-
-  
    
-  # query = "What are the latest current assets as of this date? Return one word answer"
-  # result = agent({"input":query})
-  # df['Current Assets'] = [result["output"]]
-  # #st.write(result)
+  query = "What are the latest current assets as of this date? Return one word answer"
+  result = agent({"input":query})
+  df['Current Assets'] = [result["output"]]
+  #st.write(result)
    
-  # query = "What are the latest current liabilities as of the financial statement? Return one word answer"
-  # result = agent({"input":query})
-  # df['Current Liabilities'] = [result["output"]]
-  # #st.write(result)
+  query = "What are the latest current liabilities as of the financial statement? Return one word answer"
+  result = agent({"input":query})
+  df['Current Liabilities'] = [result["output"]]
+  #st.write(result)
    
-  # current_assets = df['Current Assets'].iloc[0]
-  # current_liabilities = df['Current Liabilities'].iloc[0]
-  # query = f"The current assets are {current_assets} and the current liabilities are {current_liabilities}. What is the current ratio? Return one number onlyr"
-  # result = agent({"input":query})
-  # df['Current Ratio'] = [result["output"]]
-  # #st.write(result)
+  current_assets = df['Current Assets'].iloc[0]
+  current_liabilities = df['Current Liabilities'].iloc[0]
+  query = f"The current assets are {current_assets} and the current liabilities are {current_liabilities}. What is the current ratio? Return one number onlyr"
+  result = agent({"input":query})
+  df['Current Ratio'] = [result["output"]]
+  #st.write(result)
    
   # query = "What is the latest total Tangible Net worth as of the financial statement? Return one word answer"
   # result = agent({"input":query})
