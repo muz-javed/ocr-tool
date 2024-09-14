@@ -11,6 +11,9 @@ import numpy as np
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate
 # from datetime import datetime
 
+from langchain.utilities.tavily_search import TavilySearchAPIWrapper
+from langchain.tools.tavily_search import TavilySearchResults
+
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import RetrievalQA
@@ -256,8 +259,25 @@ with tabs[0]:
 
 
 with tabs[1]:
- query = 1
+ os.environ["TAVILY_API_KEY"] = "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"
 
+ llm = ChatOpenAI(model_name="gpt-4", temperature=0.7, openai_api_key = api_key)
+ search = TavilySearchAPIWrapper()
+ tavily_tool = TavilySearchResults(api_wrapper=search)
+
+ agent_chain = initialize_agent(
+  [tavily_tool],
+  llm,
+  agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+  verbose=True,
+  )
+
+ query = st.text_input(label, value="")
+
+ if query:
+  agent_chain.run(
+     query,
+ )
 
 
 
