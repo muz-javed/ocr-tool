@@ -359,7 +359,7 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  
   bankruptcy_response = agent_chain.run(
      # f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
-     f"Is {'NMC'} bankrupt currently? Start the response with either 'Yes' or 'No'.",
+     f"Is {'NMC'} bankrupt currently? Start the response with either 'Yes' or 'No'."
  )
   st.write(bankruptcy_response)
   # if bankruptcy_response[:3] == 'Yes':
@@ -370,21 +370,21 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  
   # df['Bankruptcy Response'] = bankruptcy_response
     
-  st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been processed successfully.</p></div>""", unsafe_allow_html=True)
+  # st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been processed successfully.</p></div>""", unsafe_allow_html=True)
         
    
-  buffer = BytesIO()
-  df.to_excel(buffer, index=False, engine='xlsxwriter')
-  buffer.seek(0)
-  b64 = base64.b64encode(buffer.read()).decode()
-  href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
+  # buffer = BytesIO()
+  # df.to_excel(buffer, index=False, engine='xlsxwriter')
+  # buffer.seek(0)
+  # b64 = base64.b64encode(buffer.read()).decode()
+  # href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
   
-  st.markdown(f"""
-  <span style="color: white; padding-left: 10px; margin-top: -20px;">
-          Click {href} to download raw data.</p>
+  # st.markdown(f"""
+  # <span style="color: white; padding-left: 10px; margin-top: -20px;">
+  #         Click {href} to download raw data.</p>
           
-  </span>
-  """, unsafe_allow_html=True)
+  # </span>
+  # """, unsafe_allow_html=True)
  
  
 
