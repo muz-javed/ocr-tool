@@ -353,6 +353,12 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  bankruptcy_response = agent_chain.run(
     f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
 )
+ if left(bankruptcy_response, 3) == 'Yes':
+  df['Bankruptcy Flag'] = 1
+
+ if left(bankruptcy_response, 2) == 'No':
+  df['Bankruptcy Flag'] = 0
+  
 
 
 
