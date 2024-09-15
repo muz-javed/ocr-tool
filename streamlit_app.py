@@ -344,18 +344,18 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
   
 #   # st.write(result)
  
-#   os.environ["TAVILY_API_KEY"] = "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"
+  os.environ["TAVILY_API_KEY"] = "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"
  
-#   llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7, openai_api_key = api_key)
-#   search = TavilySearchAPIWrapper()
-#   tavily_tool = TavilySearchResults(api_wrapper=search)
+  llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7, openai_api_key = api_key)
+  search = TavilySearchAPIWrapper()
+  tavily_tool = TavilySearchResults(api_wrapper=search)
  
-#   agent_chain = initialize_agent(
-#    [tavily_tool],
-#    llm,
-#    agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-#    verbose=True,
-#    )
+  agent_chain = initialize_agent(
+   [tavily_tool],
+   llm,
+   agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+   verbose=True,
+   )
  
   bankruptcy_response = agent_chain.run(
      # f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
