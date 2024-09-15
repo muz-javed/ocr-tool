@@ -46,11 +46,9 @@ with st.sidebar:
  cols = st.columns([0.3, 3])
  
 with cols[1]:
- st.markdown(f"""<div><h2 style="text-align:left; color: white; margin-top:20px; ">LLM Chat App</h2></div>""", unsafe_allow_html=True)
- st.markdown(f"""<div><h3 style="text-align:left; color: white; ">This is an LLM-Powered App</h3></div>""", unsafe_allow_html=True)
-
+ st.markdown(f"""<div><h2 style="text-align:left; color: white; margin-top:20px; ">About</h2></div>""", unsafe_allow_html=True)
  
- st.markdown(f"""<div><h4 style="text-align:left; color: white; margin-top: -10px; ">Financial Covenants</h4></div>""", unsafe_allow_html=True)
+ st.markdown(f"""<div><h4 style="text-align:left; color: white; margin-top: -10px; ">Chat with PDF</h4></div>""", unsafe_allow_html=True)
  st.markdown(f"""<div style="border-radius: 5px;">
   <h4 style="text-align:left; color: white;">
      <ul style="list-style-type: disc; margin-left: 1px; margin-top: -20px;">
@@ -76,7 +74,7 @@ with cols[1]:
  </div>
  """, unsafe_allow_html=True)
 
-st.markdown(f"""<div><h2 style="text-align:left; color: white; ">Chat with PDF</h2></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div><h2 style="text-align:left; color: white; ">LLM-Powered App</h2></div>""", unsafe_allow_html=True)
 
 st.markdown("""
     <style>
@@ -352,12 +350,9 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
   verbose=True,
   )
 
- # query = st.text_input('Ask the bankruptcy status', value="")
-
- # if query:
- st.write(agent_chain.run(
+ bankruptcy_response = agent_chain.run(
     f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
-))
+)
 
 
 
