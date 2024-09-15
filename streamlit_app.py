@@ -219,7 +219,7 @@ with tabs[0]:
   #st.write(result)
   df['Company Name'] = [result["output"]]
    
-  query = "What is the latest date of the financial statement? Return one word answer"
+  query = "What is the latest date of the financial statement? Return only the date in the format DD/MM/YYYY"
   result = agent({"input":query})
   #st.write(result)
   df['As of Date'] = [result["output"]]
