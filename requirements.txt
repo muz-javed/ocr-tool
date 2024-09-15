@@ -14,4 +14,4 @@ numexpr
 pydantic
 dill
 tavily-python
- 
+xlsxwriter 
