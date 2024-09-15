@@ -356,7 +356,7 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
 
  if query:
   st.write(agent_chain.run(
-     "Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
+     f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
  ))
 
 
