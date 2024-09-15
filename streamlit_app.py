@@ -354,10 +354,10 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
 
  # query = st.text_input('Ask the bankruptcy status', value="")
 
- if query:
-  st.write(agent_chain.run(
-     f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
- ))
+ # if query:
+ st.write(agent_chain.run(
+    f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
+))
 
 
 
