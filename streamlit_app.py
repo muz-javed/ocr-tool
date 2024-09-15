@@ -153,7 +153,7 @@ with tabs[0]:
    
   # chat completion llm
   llm = ChatOpenAI(
-      model_name='gpt-4',
+      model_name='gpt-4o',
       temperature=0.7
   )
   # conversational memory
