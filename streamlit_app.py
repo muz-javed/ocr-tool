@@ -349,7 +349,7 @@ with tabs[0]:
       memory=conversational_memory
   )
    
-  query = "Check if company XYZ has breached any covenants based on the financial data provided. Be detailed in your response as to what threshold values are breached and start your response with either 'Yes' or 'No' only. "
+  query = "Check if company XYZ has breached any covenants based on the financial data provided,  start your response with either 'Yes' or 'No'. Be detailed in your response."
    
   # Run the agent using the tools
   result = cov_agent.run(query)
