@@ -364,11 +364,14 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
 
   st.write(bankruptcy_response)
   
-  # if bankruptcy_response[:3] == 'Yes':
-  #  df['Bankruptcy Flag'] = 1
+  if bankruptcy_response[:3] == 'Yes':
+   # df['Bankruptcy Flag'] = 1
+   st.write(1)
+   
  
-  # if bankruptcy_response[:2] == 'No':
-  #  df['Bankruptcy Flag'] = 0
+  if bankruptcy_response[:2] == 'No':
+   # df['Bankruptcy Flag'] = 0
+   st.write(0)
  
   # df['Bankruptcy Response'] = bankruptcy_response
     
