@@ -335,6 +335,20 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
   
  # Run the agent using the tools
  result = cov_agent.run(query)
+
+ if left(result, 3) == 'Yes':
+  df['Financial Covenants Flag'] = 1
+
+ if left(result, 2) == 'No':
+  df['Financial Covenants Flag'] = 0
+
+ df['Financial Covenants Breached Response'] = result
+
+
+
+
+
+ 
  st.write(result)
 
  os.environ["TAVILY_API_KEY"] = "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"
@@ -358,6 +372,8 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
 
  if left(bankruptcy_response, 2) == 'No':
   df['Bankruptcy Flag'] = 0
+
+ df['Bankruptcy Response'] = bankruptcy_response
   
 
 
