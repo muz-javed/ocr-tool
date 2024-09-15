@@ -92,10 +92,10 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
-# covenants_pdf_file = st.file_uploader('Upload Financial Covenants', type = 'pdf')
+fs_pdf_file = st.file_uploader('Upload Financial Statement', type = 'pdf')
+covenants_pdf_file = st.file_uploader('Upload Financial Covenants', type = 'pdf')
 
-# if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
+if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
 
 #  with st.spinner('Data is being processed...'):
  
@@ -361,13 +361,14 @@ st.markdown("""
      # f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
      f"Is {'NMC'} bankrupt currently? Start the response with either 'Yes' or 'No'.",
  )
-  if bankruptcy_response[:3] == 'Yes':
-   df['Bankruptcy Flag'] = 1
+  st.write(bankruptcy_response)
+  # if bankruptcy_response[:3] == 'Yes':
+  #  df['Bankruptcy Flag'] = 1
  
-  if bankruptcy_response[:2] == 'No':
-   df['Bankruptcy Flag'] = 0
+  # if bankruptcy_response[:2] == 'No':
+  #  df['Bankruptcy Flag'] = 0
  
-  df['Bankruptcy Response'] = bankruptcy_response
+  # df['Bankruptcy Response'] = bankruptcy_response
     
   st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been processed successfully.</p></div>""", unsafe_allow_html=True)
         
