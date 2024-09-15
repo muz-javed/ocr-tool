@@ -256,8 +256,6 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  result = agent({"input":query})
  df['Debt/Net Worth'] = [result["output"]]
  # st.write(result)
-  
- st.table(df)
 
  ##########################COVENANTS#################
  cov_reader = ocr_pdf_with_options(covenants_pdf_file, './pdfservices-api-credentials.json')
@@ -336,18 +334,13 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  # Run the agent using the tools
  result = cov_agent.run(query)
 
- if left(result, 3) == 'Yes':
+ if result[:3] == 'Yes':
   df['Financial Covenants Flag'] = 1
 
- if left(result, 2) == 'No':
+ if result[:2] == 'No':
   df['Financial Covenants Flag'] = 0
 
  df['Financial Covenants Breached Response'] = result
-
-
-
-
-
  
  st.write(result)
 
@@ -367,13 +360,18 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
  bankruptcy_response = agent_chain.run(
     f"Is {df['Company Name'].iloc[0]} bankrupt currently? Start the response with either 'Yes' or 'No'.",
 )
- if left(bankruptcy_response, 3) == 'Yes':
+ if bankruptcy_response[:3] == 'Yes':
   df['Bankruptcy Flag'] = 1
 
- if left(bankruptcy_response, 2) == 'No':
+ if bankruptcy_response[:2] == 'No':
   df['Bankruptcy Flag'] = 0
 
  df['Bankruptcy Response'] = bankruptcy_response
+
+
+
+   
+ st.table(df)
   
 
 
