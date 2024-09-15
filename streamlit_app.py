@@ -1,5 +1,6 @@
 import logging
 import json
+import base64
 from io import BytesIO
 from PyPDF2 import PdfReader
 import os
