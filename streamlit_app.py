@@ -205,6 +205,8 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
       #early_stopping_method='generate',
       memory=conversational_memory
   )
+
+  st.write('Running here')
    
   #Prompts Output
   df=pd.DataFrame()
