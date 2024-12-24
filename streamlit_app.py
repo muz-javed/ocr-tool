@@ -203,7 +203,8 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
       verbose=True,
       #max_iterations=3,
       #early_stopping_method='generate',
-      memory=conversational_memory
+      memory=conversational_memory,
+      handle_parsing_errors=True
   )
 
   st.write('Running here')
