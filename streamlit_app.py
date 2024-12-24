@@ -182,8 +182,7 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
           name='KnowledgeBase',
           func=qa.run,
           description=(
-              'use this tool when answering questions to get '
-              'more information about the financial values'
+              'use this tool when answering questions to get more information about the financial values from financial statement'
           )
       )
    
@@ -211,7 +210,7 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
    
   #Prompts Output
   df=pd.DataFrame()
-  query = "What is the name of the company? Return one word answer."
+  query = "What is the name of the company as per the financial statements? Return one word answer."
   result = agent({"input":query})
   #st.write(result)
   df['Company Name'] = [result["output"]]
