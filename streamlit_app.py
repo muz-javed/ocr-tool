@@ -147,7 +147,7 @@ if (fs_pdf_file is not None) and (covenants_pdf_file is not None):
    
   # chat completion llm
   llm = ChatOpenAI(
-      model_name='gpt-4o-mini (latest)', #gpt-4o
+      model_name='gpt-4o-mini', #gpt-4o
       temperature=0.7
   )
   # conversational memory
