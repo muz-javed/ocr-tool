@@ -40,7 +40,7 @@ from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResu
 from functions import *
 
 #OPENAIKEY
-api_key = "sk-svcacct-1zPs3N4CuXrMJgUKFmOz0GBKT3iYpz6q9xXazC8pwaO17jvFUW7I9lIVO86sqQ1T3BlbkFJCiN4obeFtNBA7ggV6_P4txg2trDGM6MGolx8I18SrcNqOce1AquOz-QMRfX8W2gA"
+api_key = "sk-svcacct-EfMRbtDPEPTMs4IJzDnAQmNJjqNN1izMRtBNl2FtfzJquUVKkWkEsLuwnA1qOim9J1T3BlbkFJfWo1ghzG2s3paJf2cj9IJIInymJiL3ETcziKTkN3aqNp8Mv0S-vQJdUqoPa5pdhMQA"
 os.environ['OPENAI_API_KEY'] = api_key
 
 with st.sidebar:
